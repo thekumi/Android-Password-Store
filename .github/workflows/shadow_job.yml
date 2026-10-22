@@ -9,7 +9,7 @@ jobs:
   provide-agp-version-matrix:
     runs-on: docker
     container:
-      image: cimg/android:2025.12.1-node
+      image: cimg/android:2026.10.1-node
     outputs:
       agp-versions: ${{ steps.build-agp-matrix.outputs.agp-versions }}
     steps:
@@ -27,7 +27,7 @@ jobs:
       matrix:
         agp-version: ${{ fromJSON(needs.provide-agp-version-matrix.outputs.agp-versions) }}
     container:
-      image: cimg/android:2025.12.1-node
+      image: cimg/android:2026.10.1-node
     name: Run AGP-${{ matrix.agp-version }}
     steps:
     - name: Checkout repository
@@ -44,7 +44,7 @@ jobs:
     runs-on: docker
     if: ${{ always() }}
     container:
-      image: cimg/android:2025.12.1-node
+      image: cimg/android:2026.10.1-node
     name: Final Results
     needs: [shadow-job]
     steps:
